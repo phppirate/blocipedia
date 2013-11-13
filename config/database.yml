@@ -28,7 +28,7 @@ test:
   database: blocipedia_test
   pool: 5
   username: root
-  password:
+  password: 
   socket: /tmp/mysql.sock
 
 production:
