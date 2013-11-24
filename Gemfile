@@ -24,6 +24,9 @@ gem 'less-rails-bootstrap'
 
 gem 'devise'
 gem 'jquery-rails'
+gem 'friendly_id', '~> 4.0.10'
+gem 'redcarpet'
+
 
 group :test do
   gem 'rspec-rails', '2.9.0'

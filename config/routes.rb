@@ -1,10 +1,14 @@
 Blocipedia::Application.routes.draw do
+  resources :wikis
+
+
   devise_for :users
 
   root :to => "main#index"
 
   match "about" => 'main#about'
   match "help" => 'main#help'
+  match "user_wikis" => 'wikis#user_wikis'
 
   resource :wikis
 

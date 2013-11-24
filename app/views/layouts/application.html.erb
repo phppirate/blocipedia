@@ -8,9 +8,10 @@
 </head>
 <body style="padding-top: 70px">
 
+
 <div class="container">
 
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -27,9 +28,9 @@
       <ul class="nav navbar-nav">
 
         <% if user_signed_in? %>
-          <li><%= link_to "Wikis", wikis_path %></li>
+          <li><%= link_to "My wikis", user_wikis_path %></li>
           <li class="dropdown">
-            <a href="#" class="toggle-dropdown" data-toggle="dropdown">Account <span class="caret"></span></a>
+            <a href="#" class="toggle-dropdown" data-toggle="dropdown"><%= current_user.name || current_user.email %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", "#" %></li>
                 <li><%= link_to "Settings", edit_user_registration_path %></li>
@@ -44,6 +45,7 @@
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Wikis", wikis_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Help", help_path %></li>
       </ul>
@@ -51,7 +53,6 @@
   </nav>
 
   <%= flash_messages %>
-
 
   <%= yield %>
 

@@ -14,4 +14,15 @@ module ApplicationHelper
     nil
   end
  
+  def markdown(content)
+    @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, space_after_headers: true, fenced_code_blocks: true)
+    @markdown.render(content)
+  end
+  # def markdown(text)
+  #   renderer = Redcarpet::Render::HTML.new
+  #   extensions = {fenced_code_blocks: true}
+  #   redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+  #   (redcarpet.render text).html_safe
+  # end
+
 end
