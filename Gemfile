@@ -6,6 +6,7 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
+gem 'mysql'
 
 
 # Gems used only for assets and not required
@@ -26,7 +27,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'friendly_id', '~> 4.0.10'
 gem 'redcarpet'
-
+gem 'markdown_preview'
 
 group :test do
   gem 'rspec-rails', '2.9.0'
