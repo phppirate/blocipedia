@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @wiki.name %>
+</p>
+
+<p>
+  <b>Private:</b>
+  <%= @wiki.private %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @wiki.description %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= markdown(@wiki.body).html_safe %>
+</p>
+
+
+<%= link_to 'Edit', edit_wiki_path(@wiki) %> |
+<% if current_user %>
+<%= link_to 'All Wikis', wikis_path %> | <%= link_to 'My Wikis', user_wikis_path %>
+<% else %>
+<%= link_to 'Back', wikis_path %>
+<% end %>

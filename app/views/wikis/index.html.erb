@@ -1,0 +1,31 @@
+<h1>Listing wikis</h1>
+
+<table class="table table-striped table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Actions</th>
+  </tr>
+
+<% @wikis.each do |wiki| %>
+  <% if !wiki.private %>
+  <tr>
+    <td><%= wiki.name %></td>
+    <td><%= wiki.description %></td>
+    <td>
+        <span class="btn-group">
+            <%= link_to 'View', wiki, class: "btn btn-sm btn-primary" %> 
+            <%= link_to 'Edit', edit_wiki_path(wiki), class: "btn btn-sm btn-success" %> 
+            <%= link_to 'Destroy', wiki, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
+        </span>
+    </td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to new_wiki_path, class: "btn btn-primary" do %>
+    <span class="glyphicon glyphicon-plus"></span> New Wiki
+<% end %>
