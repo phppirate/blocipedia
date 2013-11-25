@@ -5,20 +5,28 @@
     <a class="btn btn-success" href="#">Sign up now!</a>
   </p>
 </div>
-
-  <h1 class="text-center">Plans<hr/></h1>
-
-  <div class="col-md-6 text-center">
-    <div class="">
-      <h1>Free Plan<hr/></h1>
-      <h3>Create as many public wikis as you want!</h3>
-      <a class="btn btn-default btn-inverse btn-block btn-lg" href="<%= new_user_registration_path %>">Sign up</a>
-    </div>
+<div class="container">
+  
+<div class="col-md-4">
+  <div class="thumbnail text-center">
+    <h2>Free Plan</h2>
+    <p>The Free plan allows you to create as many public wikis a you want! With a name, description, and a body.</p>
+    <a href="#" class="btn btn-primary btn-block btn-lg">Sign up!</a>
   </div>
-  <div class="col-md-6 text-center">
-    <div class="">
-      <h1>Premium Plan<hr/></h1>
-      <h3>Create private wikis!</h3>
-      <a class="btn btn-primary btn-inverse btn-block btn-lg" href="<%= new_user_registration_path %>">Sign up</a>
-    </div>
+</div>
+<div class="col-md-4">
+  <div class="thumbnail text-center star-background">
+    <h2 class="primary">Premium Plan</h2>
+    <p>The Premium plan gives you the ability to make as many public and private wikis as you want! With all the other abilitys as a Free plan user.</p>
+    <a href="#" class="btn btn-success btn-block btn-lg">Sign up!</a>
   </div>
+</div>
+<div class="col-md-4">
+  <div class="thumbnail text-center">
+    <h2>More about Blocapedia</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque, facere nobis enim nostrum numquam soluta in alias facilis consequuntur!</p>
+    <a href="<%= about_path %>" class="btn btn-warning btn-block btn-lg">Read More!</a>
+  </div>
+</div>
+
+</div>

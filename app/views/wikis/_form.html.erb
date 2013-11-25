@@ -13,25 +13,27 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-
+<br />
   <% if current_user.premium? %>
     <div class="field">
-      <%= f.label :private %><br />
-      <%= f.check_box :private %>
+      <%= f.label :private %> <%= f.check_box :private %>
     </div>
   <% end %>
-
+<br />
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :rows => 5 %>
+    <%= f.text_area :description, class: "form-control", :rows => 5 %>
   </div>
+<br />
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "form-control markdown-preview", :data => {:target => ".preview-markdown"} %>
   </div>
+<br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-success" %>
   </div>
+<br />
 <% end %>

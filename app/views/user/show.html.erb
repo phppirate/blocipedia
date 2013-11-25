@@ -1,0 +1,18 @@
+<h1><%= @user.name %></h1>
+<div class="col-md-4">
+  <table class="table">
+    <thead>
+      <tr><th><%= link_to "Wikis", user_wikis_path %></th><th>Info</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Wikis count</strong></td>
+        <td><%= @user.wikis.count %></td>
+      </tr>
+      <tr>
+        <td><strong>Private wikis count</strong></td>
+        <td><%= @private_wikis.count %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

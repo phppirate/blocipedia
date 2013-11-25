@@ -1,4 +1,6 @@
 Blocipedia::Application.routes.draw do
+  get "user/show"
+
   resources :wikis
 
 

@@ -13,11 +13,23 @@ class WikisController < ApplicationController
     @wikis = current_user.wikis
   end
 
-
   # GET /wikis/1
   # GET /wikis/1.json
   def show
     @wiki = Wiki.find(params[:id])
+    if current_user == @wiki.user
+      @user_wiki = true
+    else
+      @user_wiki = false
+    end
+
+    if @user_wiki
+      @edit_button = true
+    else
+      @edit_button = false
+    end
+
+
   end
 
   # GET /wikis/new
