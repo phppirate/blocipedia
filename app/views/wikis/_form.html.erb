@@ -1,4 +1,17 @@
+
 <%= form_for(@wiki) do |f| %>
+<style>
+.CodeMirror {border: 1px solid silver; border-width: 1px 2px; }
+      .cm-header { font-family: arial; }
+      .cm-header1 { font-size: 150%; }
+      .cm-header2 { font-size: 130%; }
+      .cm-header3 { font-size: 120%; }
+      .cm-header4 { font-size: 110%; }
+      .cm-header5 { font-size: 100%; }
+      .cm-header6 { font-size: 90%; }
+      .cm-strong { font-size: 140%; }
+</style>
+
   <% if @wiki.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@wiki.errors.count, "error") %> prohibited this wiki from being saved:</h2>
@@ -11,29 +24,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-<br />
-  <% if current_user.premium? %>
-    <div class="field">
-      <%= f.label :private %> <%= f.check_box :private %>
-    </div>
-  <% end %>
-<br />
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, class: "form-control", :rows => 5 %>
-  </div>
-<br />
+  
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body, class: "form-control markdown-preview", :data => {:target => ".preview-markdown"} %>
+    <%= f.text_area :body, id: "code", class: "form-control markdown-preview", :data => {:target => ".preview-markdown"} %>
+  </div>
+<br />
+<input type="checkbox" id="details" class="toggle-view" data-toggle=".details"/> <label for="details">Advanced</label>
+  <br />
+  <div class="details hide">
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, class: "form-control input-sm" %>
+    </div>
+    <br />
+    <% if current_user.premium? %>
+      <div class="field">
+        <%= f.label :private %> <%= f.check_box :private %>
+      </div>
+    <% end %>
+  <br />
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, class: "form-control", :rows => 5 %>
+    </div>
   </div>
 <br />
   <div class="actions">
     <%= f.submit class: "btn btn-success" %>
   </div>
 <br />
+
 <% end %>

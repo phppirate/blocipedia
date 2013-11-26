@@ -16,3 +16,10 @@
 .alert {
   margin-bottom: 0px;
 }
+
+textarea{
+  max-width: 100%;
+  background: #fff;
+  background-color: #fff;
+  font-family: helvetica;
+}

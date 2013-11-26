@@ -22,3 +22,9 @@ $(".markdown-preview").keyup(function(e){
   
   $($(this).attr("data-target")).html(html);
 });
+
+$(".toggle-view").click(function(e){
+  
+    $($(".toggle-view").attr("data-toggle")).toggleClass("hide");
+
+});
