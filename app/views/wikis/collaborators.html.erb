@@ -1,0 +1,21 @@
+<h1>"<%= @wiki.name %>" Collaborators</h1>
+
+
+<%= form_tag :create_collaborators do %>
+  
+<table class="table">
+  <thead><th>Name</th><th>Email</th><th>Give Access</th></thead>
+  <% @users.each do |c| %>
+  <tr>
+    <td><%= c.name %></td>
+    <td><%= c.email %></td>
+    <td><%= check_box_tag 'users[]', c.id %> <label for="<%= c.id %>">Give Access</label></td>
+  </tr>
+
+  <% end %>
+</table>
+
+<%#= @wiki.collaborations.count %>
+<%= submit_tag "Update" %>
+
+<% end %>

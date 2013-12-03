@@ -1,22 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<table class="table">
-  <tr><td><b>Name</b></td><td><b>Private</b></td><td><b>Description</b></td></tr>
-  <tr><td><%= @wiki.name %></td><td><%= @wiki.private %></td><td><%= @wiki.description %></td></tr>
-</table>
-<hr/>
 
 <p>
   <%= markdown(@wiki.body).html_safe %>
 </p>
-
-<span class="btn-group">
-  <% if @edit_button %>
-    <%= link_to 'Edit', edit_wiki_path(@wiki), class: "btn btn-default btn-sm" %>
-  <% end %>
-  <% if current_user %>
-    <%= link_to 'All Wikis', wikis_path, class: "btn btn-default btn-sm" %><%= link_to 'My Wikis', user_wikis_path, class: "btn btn-default btn-sm" %>
-  <% else %>
-    <%= link_to 'Back', wikis_path, class: "btn btn-default btn-sm" %>
-  <% end %>
-</span>
+<hr/>
+<hr>
+<input type="checkbox" id="details" class="toggle-view" data-toggle=".hideable"/> <label for="details">Advanced</label>
+<table class="table hideable hide">
+  <tr><td><b>Name</b></td><td><b>Private</b></td><td><b>Description</b></td></tr>
+  <tr><td><%= @wiki.name %></td><td><%= @wiki.private %></td><td><%= @wiki.description %></td></tr>
+</table>
+<hr>
+<hr>
+<br>
+<p>
+  <span class="btn-group">
+      <%= link_to 'Edit', edit_wiki_path(@wiki), class: "btn btn-default btn-sm" %>
+      <%= link_to 'All Wikis', wikis_path, class: "btn btn-default btn-sm" %><%= link_to 'My Wikis', user_wikis_path, class: "btn btn-default btn-sm" %>
+      <%= link_to 'Back', wikis_path, class: "btn btn-default btn-sm" %>
+  </span>
+</p>
+<br>

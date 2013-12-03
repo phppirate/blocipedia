@@ -1,16 +1,5 @@
 
 <%= form_for(@wiki) do |f| %>
-<style>
-.CodeMirror {border: 1px solid silver; border-width: 1px 2px; }
-      .cm-header { font-family: arial; }
-      .cm-header1 { font-size: 150%; }
-      .cm-header2 { font-size: 130%; }
-      .cm-header3 { font-size: 120%; }
-      .cm-header4 { font-size: 110%; }
-      .cm-header5 { font-size: 100%; }
-      .cm-header6 { font-size: 90%; }
-      .cm-strong { font-size: 140%; }
-</style>
 
   <% if @wiki.errors.any? %>
     <div id="error_explanation">
@@ -24,24 +13,28 @@
     </div>
   <% end %>
 
-  
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: "form-control input-sm" %>
+  </div>
+  <br />
   <div class="field">
     <%= f.label :body %><br />
     <%= f.text_area :body, id: "code", class: "form-control markdown-preview", :data => {:target => ".preview-markdown"} %>
   </div>
 <br />
-<input type="checkbox" id="details" class="toggle-view" data-toggle=".details"/> <label for="details">Advanced</label>
   <br />
-  <div class="details hide">
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, class: "form-control input-sm" %>
-    </div>
-    <br />
+  <div class="details">
     <% if current_user.premium? %>
       <div class="field">
         <%= f.label :private %> <%= f.check_box :private %>
       </div>
+      <br />
+      <% if !@wiki.new_record? %>
+        <div class="field">
+          <a href="<%= collaborators_path(@wiki) %>" class="btn btn-block btn-lg btn-default">Collaborators</a>
+        </div>
+      <% end %>
     <% end %>
   <br />
     <div class="field">

@@ -14,7 +14,7 @@ module ApplicationHelper
     nil
   end
  
-   def markdown(content)
+  def markdown(content)
     options = {
       autolink: true,
       space_after_headers: true,

@@ -11,7 +11,6 @@ class UserController < ApplicationController
       end
     end
     @private_wikis
-
-
   end
+
 end

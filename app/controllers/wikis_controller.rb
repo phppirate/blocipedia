@@ -13,6 +13,20 @@ class WikisController < ApplicationController
     @wikis = current_user.wikis
   end
 
+  def collaborations
+    @wikis = current_user.collaborated_wikis
+  end
+
+  def create_collaborations
+    @wiki = Wiki.find(10)
+
+    @users = []
+    params[:user].each do |u|
+      @users << User.find(u)
+    end
+    @user
+  end
+
   # GET /wikis/1
   # GET /wikis/1.json
   def show
@@ -48,16 +62,35 @@ class WikisController < ApplicationController
   def create
     @wiki = current_user.wikis.new(params[:wiki])
 
-    respond_to do |format|
-      if @wiki.save
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
-        format.json { render json: @wiki, status: :created, location: @wiki }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @wiki.errors, status: :unprocessable_entity }
+    if !@wiki.private || current_user.premium
+      respond_to do |format|
+        if @wiki.save
+          format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
+          format.json { render json: @wiki, status: :created, location: @wiki }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @wiki.errors, status: :unprocessable_entity }
+        end
       end
+
+    else
+
+      flash[:notice] = "You are not authorized to create private wikis."
+      render 'new'
+
     end
   end
+
+  def collaborators
+    @wiki = Wiki.find(params[:id])
+    @users = User.all
+  end
+
+
+  # wiki = Wiki.find(params[:wiki_id])
+  # params[:users].each do { |id| User.find(id).wikis << wiki}
+  #   wiki.save
+
 
   # PUT /wikis/1
   # PUT /wikis/1.json

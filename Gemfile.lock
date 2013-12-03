@@ -49,6 +49,8 @@ GEM
     diff-lcs (1.1.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    faker (1.2.0)
+      i18n (~> 0.5)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     hike (1.2.3)
@@ -105,6 +107,8 @@ GEM
       json (~> 1.4)
     redcarpet (3.0.0)
     ref (1.0.5)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -123,6 +127,9 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    stripe (1.8.8)
+      multi_json (>= 1.0.4, < 2)
+      rest-client (~> 1.4)
     therubyracer (0.12.0)
       libv8 (~> 3.16.14.0)
       ref
@@ -146,6 +153,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
+  faker
   friendly_id (~> 4.0.10)
   jquery-rails
   less-rails-bootstrap
@@ -155,5 +163,6 @@ DEPENDENCIES
   rails (= 3.2.13)
   redcarpet
   rspec-rails (= 2.9.0)
+  stripe
   therubyracer
   uglifier (>= 1.0.3)

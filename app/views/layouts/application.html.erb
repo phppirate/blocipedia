@@ -3,7 +3,6 @@
 <head>
   <title>Blocipedia</title>
   <%= stylesheet_link_tag    "application" %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body style="padding-top: 50px">
@@ -28,6 +27,7 @@
 
         <% if user_signed_in? %>
           <li><%= link_to "My wikis", user_wikis_path %></li>
+          <li><%= link_to "Collaborated wikis", collaborations_path %></li>
           <li class="dropdown">
             <a href="#" class="toggle-dropdown" data-toggle="dropdown"><%= current_user.name || current_user.email %> <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -42,45 +42,41 @@
           <li><%= link_to "Sign up", new_user_registration_path %></li>
         <% end %>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
+      <!-- <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search Wikis">
         </div>
         <button type="submit" class="btn btn-default"><b class="glyphicon glyphicon-search"></b> </button>
-      </form>
+      </form> -->
       <ul class="nav navbar-nav pull-right">
         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Wikis", wikis_path %></li>
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Help", help_path %></li>
+          <% if current_user %>
+            <% if !current_user.premium? %>
+              <%= link_to new_charge_path, class: "navbar-brand", title: "GO PREMIUM" do %>
+                <span class="glyphicon glyphicon-star"></span>
+              <% end %>
+            <% else %>
+              <%= link_to new_charge_path, class: "navbar-brand", title: "YOU'RE PREMIUM" do %>
+                <span class="yellow glyphicon glyphicon-star"></span>
+              <% end %>
+            <% end %>
+          <% end %>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>
-
   <%= flash_messages %>
 
   <%= yield %>
-
+<br>
 
 <% if !@no_container %>
   </div>
 <% end %>
 
 <%= javascript_include_tag "application" %>
-<script>
-var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-  lineNumbers: true,
-  lineWrapping: true,
-  mode: "markdown"
-});
-</script>
-<style>
-#code{
-  max-width: 100%;
-  background: #fff;
-  background-color: #fff;
-  font-family: helvetica;
-}
-</style>
 </body>
 </html>

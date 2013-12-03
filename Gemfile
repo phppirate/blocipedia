@@ -20,6 +20,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 
 end
+
+gem 'faker'
 gem 'therubyracer'
 gem 'less-rails-bootstrap'
 
@@ -28,6 +30,8 @@ gem 'jquery-rails'
 gem 'friendly_id', '~> 4.0.10'
 gem 'redcarpet'
 gem 'markdown_preview'
+gem 'stripe'
+
 
 group :test do
   gem 'rspec-rails', '2.9.0'

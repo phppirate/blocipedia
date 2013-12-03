@@ -1,8 +1,11 @@
 Blocipedia::Application.routes.draw do
+
+  resources :charges
+
   get "user/show"
 
-  resources :wikis
 
+  resources :wikis
 
   devise_for :users
 
@@ -13,7 +16,13 @@ Blocipedia::Application.routes.draw do
   match "user_wikis" => 'wikis#user_wikis'
 
   resource :wikis
+  match "collaborations" => 'wikis#collaborations'
+  get '/wikis/:id/collaborators', to: 'wikis#collaborators', as: 'collaborators'
+  
+  post ':controller(/:action(/:id(.:format)))'
+  get ':controller(/:action(/:id(.:format)))'  
 
+  match "create_collaborators" => "wikis#create_collaborations"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

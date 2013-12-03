@@ -1,0 +1,33 @@
+<h1>Sign up for Premium</h1>
+
+  
+<div class="col-md-4">
+  <br/>
+  <%= label_tag :email, "Email" %>
+  <%= text_field_tag :email, current_user.email, name: nil, class: "form-control" %>
+  <br/>
+  <%= label_tag :card_number, "Credit Card Number" %>
+  <%= text_field_tag :card_number, nil, name: nil, class: "form-control" %>
+  <br/>
+  <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+  <%= text_field_tag :card_code, nil, name: nil, class: "form-control" %>
+  <br/>
+  <%= label_tag :card_month, "Card Expiration" %>
+  <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+  <br/>
+
+  <input type="submit" value="Submit"/>
+
+</div>
+
+<form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_live_j2opTAqfuFK1Ooj6M264ajYg"
+    data-amount="200"
+    data-name="Blocapedia"
+    data-description="Premium Plan ($2.00)"
+    data-image="/128x128.png">
+  </script>
+</form>
