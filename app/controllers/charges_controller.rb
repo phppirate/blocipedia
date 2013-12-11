@@ -20,7 +20,7 @@ class ChargesController < ApplicationController
         :currency    => 'usd'
       )
 
-      current_user.update_attribute(:premium, true)
+      current_user.update_attribute(:premium_at, Time.now)
     else
       flash[:notice] = "Your email is incorrect."
       redirect_to new_charge_path

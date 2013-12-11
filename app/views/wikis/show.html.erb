@@ -1,22 +1,18 @@
-
-<p>
-  <%= markdown(@wiki.body).html_safe %>
-</p>
-<hr/>
-<hr>
+<br>
 <input type="checkbox" id="details" class="toggle-view" data-toggle=".hideable"/> <label for="details">Advanced</label>
 <table class="table hideable hide">
   <tr><td><b>Name</b></td><td><b>Private</b></td><td><b>Description</b></td></tr>
   <tr><td><%= @wiki.name %></td><td><%= @wiki.private %></td><td><%= @wiki.description %></td></tr>
 </table>
-<hr>
-<hr>
+<h1><%= @wiki.name %></h1>
+<p>
+  <%= markdown(@wiki.body).html_safe %>
+</p>
 <br>
 <p>
   <span class="btn-group">
       <%= link_to 'Edit', edit_wiki_path(@wiki), class: "btn btn-default btn-sm" %>
       <%= link_to 'All Wikis', wikis_path, class: "btn btn-default btn-sm" %><%= link_to 'My Wikis', user_wikis_path, class: "btn btn-default btn-sm" %>
-      <%= link_to 'Back', wikis_path, class: "btn btn-default btn-sm" %>
   </span>
 </p>
 <br>

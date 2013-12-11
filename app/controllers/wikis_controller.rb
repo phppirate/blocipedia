@@ -5,7 +5,14 @@ class WikisController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @wikis = Wiki.all
+    @wSorted = Wiki.all
+    @wikis = []
+
+    @wSorted.each do |w|
+      @wikis << w unless w.private?
+    end
+
+    @wikis
   end
 
 
@@ -15,16 +22,6 @@ class WikisController < ApplicationController
 
   def collaborations
     @wikis = current_user.collaborated_wikis
-  end
-
-  def create_collaborations
-    @wiki = Wiki.find(10)
-
-    @users = []
-    params[:user].each do |u|
-      @users << User.find(u)
-    end
-    @user
   end
 
   # GET /wikis/1
@@ -42,8 +39,6 @@ class WikisController < ApplicationController
     else
       @edit_button = false
     end
-
-
   end
 
   # GET /wikis/new
@@ -83,7 +78,6 @@ class WikisController < ApplicationController
 
   def collaborators
     @wiki = Wiki.find(params[:id])
-    @users = User.all
   end
 
 
@@ -96,9 +90,15 @@ class WikisController < ApplicationController
   # PUT /wikis/1.json
   def update
     @wiki = Wiki.find(params[:id])
+    #@wikis = Wiki.paginate(page: params[:page], per_page: 10)
+    user_ids = params[:wiki].delete(:user_ids)
 
     respond_to do |format|
       if @wiki.update_attributes(params[:wiki])
+        unless user_ids.blank?
+          user_ids.each { |u| @wiki.users << User.find(u) unless u.blank? }
+        end
+
         format.html { redirect_to @wiki, notice: 'Wiki was successfully updated.' }
         format.json { head :no_content }
       else

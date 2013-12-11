@@ -1,21 +1,17 @@
 <h1>"<%= @wiki.name %>" Collaborators</h1>
 
 
-<%= form_tag :create_collaborators do %>
-  
-<table class="table">
-  <thead><th>Name</th><th>Email</th><th>Give Access</th></thead>
-  <% @users.each do |c| %>
-  <tr>
-    <td><%= c.name %></td>
-    <td><%= c.email %></td>
-    <td><%= check_box_tag 'users[]', c.id %> <label for="<%= c.id %>">Give Access</label></td>
-  </tr>
-
-  <% end %>
-</table>
-
-<%#= @wiki.collaborations.count %>
-<%= submit_tag "Update" %>
+<%= form_for(@wiki)  do |f| %>
+<input type="text" data-role="filter" placeholder="Filter users" data-target=".cal-list" class="form-control"/>
+<ul class="no-list-style cal-list">
+<%= hidden_field_tag "wiki[user_ids][]", nil %>
+    <% User.all.each do |u| %>
+      <li>
+        <%= check_box_tag "wiki[user_ids][]", u.id, @wiki.user_ids.include?(u.id), id: dom_id(u) %>
+        <%= label_tag dom_id(u), u.name %>
+      </li>
+    <% end %>
+</ul>
+<%= f.submit %>
 
 <% end %>

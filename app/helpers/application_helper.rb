@@ -23,11 +23,5 @@ module ApplicationHelper
     @markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
     @markdown.render(content)
   end
-  # def markdown(text)
-  #   renderer = Redcarpet::Render::HTML.new
-  #   extensions = {fenced_code_blocks: true}
-  #   redcarpet = Redcarpet::Markdown.new(renderer, extensions)
-  #   (redcarpet.render text).html_safe
-  # end
 
 end

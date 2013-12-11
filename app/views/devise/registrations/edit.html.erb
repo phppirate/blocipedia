@@ -1,4 +1,4 @@
-<h2>Edit <%= current_user.name %> <%= '<span class="glyphicon glyphicon-star yellow dropshadow"></span>' if current_user.premium? %></h2>
+<h2>Edit <%= current_user.name %> <% if current_user.premium? %><span class="glyphicon glyphicon-star yellow dropshadow"></span><% end %></h2>
 
 <div class="col-md-4">
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
